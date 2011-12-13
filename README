@@ -1,4 +1,3 @@
-
 And experimental multilang structure for django applications.
 
 The key is to define a kwarg on every view that supports multilanguage. On views that are not supposed to have multilanguage version, use the @nomultilang decorator.
@@ -28,3 +27,13 @@ For views that "do not support" multi lingual results you can use, for example, 
 the will access.
 
 That's it! this is just an idea that can be implemented so one can have multi-lang URLS on any django-app.
+
+
+Things to test
+
+ * How do ew maintain a user on the same language as he clicks around on the site? If we came to the site with /en/blog/post/3,
+if he clicks on another link he must be sent to /en/blog/* and not just /blog/*. Don't know how {%url%} will behave with the idea
+of a view being mapped twice on urls.py
+
+
+
