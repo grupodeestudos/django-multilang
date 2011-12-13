@@ -1,5 +1,30 @@
 
-
 And experimental multilang structure for django applications.
 
 The key is to define a kwarg on every view that supports multilanguage. On views that are not supposed to have multilanguage version, use the @nomultilang decorator.
+
+
+As an example, see the main utls.py file where thete is two mapping to the same django-application view.
+
+For example, here we have a "blog" app. This blog decalres some views and some URL mapping in blog/urls.py.
+
+
+In the main urls.py we map the twice:
+
+ * One for the URL without the language
+ * Another with a regex that extracts the language into the "lang" parameter
+
+Based on this and supposing we attached the "blog" app at /blog we can access:
+
+ * /blog/*
+ * /en/blog/*
+ * /pt_BR/blog/*
+
+and the language will be passed as a keywork argument to the specified view. Check the views at blog/views.py
+
+
+For views that "do not support" multi lingual results you can use, for example, a decorator that removes the 
+"lang" keyword argument. This is needed because as we mapped the blog app twice, we don't know with of the URLS
+the will access.
+
+That's it! this is just an idea that can be implemented so one can have multi-lang URLS on any django-app.
