@@ -1,0 +1,5 @@
+
+
+And experimental multilang structure for django applications.
+
+The key is to define a kwarg on every view that supports multilanguage. On views that are not supposed to have multilanguage version, use the @nomultilang decorator.
