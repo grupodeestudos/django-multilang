@@ -31,9 +31,14 @@ That's it! this is just an idea that can be implemented so one can have multi-la
 
 Things to test
 
- * How do ew maintain a user on the same language as he clicks around on the site? If we came to the site with /en/blog/post/3,
+ * How do we maintain a user on the same language as he clicks around on the site? If we came to the site with /en/blog/post/3,
 if he clicks on another link he must be sent to /en/blog/* and not just /blog/*. Don't know how {%url%} will behave with the idea
 of a view being mapped twice on urls.py
+
+
+ R: Create a custom templatetag to resolve urls. It uses reverse() internally but adds the lang prefix. For this we *must* include the value of the current lang into the template context. Maybe a new "render_to_response" that adds the lang and calls the original render_to_response. This way the templatetag will have access to the lang value and will be able to remount the url. Take special care of applications not depolyed on the root of the webservice.
+
+Maybe an app attached at: /myapp/pt. {%mytagurl blog%}, must return /myapp/pt/blog, and not /pt/myapp/blog. This could be hard to do because the original reverse() will return the full URL, *already* containing /myapp. So maybe we need to add to the context the request.path_info, so the templatetag can "inject" the language between the "path_info" and the remaining URL.
 
 
 

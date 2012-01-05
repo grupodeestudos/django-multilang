@@ -9,6 +9,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+import os
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -103,6 +107,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'mlang.urls'
 
 TEMPLATE_DIRS = (
+        ROOT,
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -119,6 +124,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'blog'
 )
 
 # A sample logging configuration. The only tangible logging

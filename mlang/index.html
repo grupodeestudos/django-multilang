@@ -1,0 +1,15 @@
+{% load localeurl %}
+
+<html> 
+
+  Current lang: <b>{{lang}}</b> <br/>
+  Link to home: {% url home %} <br/>
+  Link to blog: {% url blog-home %}<br/>
+  
+  Locale: {%echotag%} <br/>
+
+  {{o}}
+
+</html>
+
+
